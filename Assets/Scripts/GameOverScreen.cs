@@ -17,7 +17,6 @@ public class GameOverScreen : MonoBehaviour
 
     public void Quit()
     {
-        print("Quit");
         Application.Quit();
     }
 }

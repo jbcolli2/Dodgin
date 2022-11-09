@@ -18,7 +18,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] 
     private GameOverScreen gameOverScreen;
     
-    [SerializeField] private TMPro.TMP_Text healthText;
+    [SerializeField] private HealthText healthText;
     
     
     private Vector2 positionDelta = new Vector2(0, 0);
@@ -34,7 +34,7 @@ public class ShipController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        healthText.text = "Health: " + health;
+        healthText.InitHealth(health);
         
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         
@@ -88,13 +88,10 @@ public class ShipController : MonoBehaviour
             float asteroidSize = collision.gameObject.transform.localScale.x;
             health -= (int)(maxHitDamage * asteroidSize);
             health = Math.Max(health, 0);
-            healthText.text = "Health: " + health;
+            healthText.DecreaseHealth(health);
         }
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        print("Hello");
-    }
+
 }
